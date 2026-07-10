@@ -405,6 +405,7 @@
 
 			/* Text inputs & Textarea */
 			input[type='text'],
+			input[type='email'],
 			textarea {
 				width: 100%;
 				background: var(--color-warm-white);
@@ -420,6 +421,7 @@
 			}
 
 			input[type='text']:focus,
+			input[type='email']:focus,
 			textarea:focus {
 				border-color: var(--color-green-light);
 				box-shadow: 0 0 0 3.5px var(--color-focus-ring);
@@ -852,6 +854,7 @@
 						q: q.q,
 						type: q.type,
 						options: q.options || [],
+						optional: q.optional || false,
 					});
 				});
 				return order.map((cat) => ({
@@ -880,6 +883,16 @@
 					{
 						category: 'Business Profile',
 						questions: [
+							{
+								q: 'Name (Optional)',
+								type: 'text',
+								optional: true,
+							},
+							{
+								q: 'Email Address (Optional)',
+								type: 'email',
+								optional: true,
+							},
 							{
 								q: 'Pls share your restraunt / café name, location, social media handle e.g. instagram, website etc.',
 								type: 'text',
@@ -1379,8 +1392,30 @@
 							},
 						],
 					},
+					{
+						category: 'Feedback & Updates',
+						questions: [
+							{
+								q: "Please share your overall experience and feedback about this survey. If you'd like to be notified about our future product launch, you can optionally leave your preferred contact details (such as an email address, phone number, or social media handle) below.",
+								type: 'textarea',
+								optional: true,
+							},
+						],
+					},
 				],
 				tour: autoGenerateSections([
+					{
+						category: 'Business Profile',
+						q: 'Name (Optional)',
+						type: 'text',
+						optional: true,
+					},
+					{
+						category: 'Business Profile',
+						q: 'Email Address (Optional)',
+						type: 'email',
+						optional: true,
+					},
 					{
 						category: 'Business Profile',
 						q: 'What type of travel business do you operate?',
@@ -1523,11 +1558,27 @@
 							'Other',
 						],
 					},
+					{
+						category: 'Feedback & Updates',
+						q: "Please share your overall experience and feedback about this survey. If you'd like to be notified about our future product launch, you can optionally leave your preferred contact details (such as an email address, phone number, or social media handle) below.",
+						type: 'textarea',
+						optional: true,
+					},
 				]),
 				tourist: [
 					{
 						category: 'Traveller Profile',
 						questions: [
+							{
+								q: 'Name (Optional)',
+								type: 'text',
+								optional: true,
+							},
+							{
+								q: 'Email Address (Optional)',
+								type: 'email',
+								optional: true,
+							},
 							{
 								q: 'Lets start with you age first, you could tell us, pls:)',
 								type: 'dropdown',
@@ -2134,6 +2185,16 @@
 							},
 						],
 					},
+					{
+						category: 'Feedback & Updates',
+						questions: [
+							{
+								q: "Please share your overall experience and feedback about this survey. If you'd like to be notified about our future product launch, you can optionally leave your preferred contact details (such as an email address, phone number, or social media handle) below.",
+								type: 'textarea',
+								optional: true,
+							},
+						],
+					},
 				],
 			};
 
@@ -2347,7 +2408,7 @@
 					const qText = document.createElement('label');
 					qText.className = 'question-text';
 					qText.setAttribute('for', `q-input-${idx}`);
-					qText.innerHTML = `${q.q}<span class="required-star" aria-hidden="true">*</span>`;
+					qText.innerHTML = `${q.q}${q.optional ? '' : '<span class="required-star" aria-hidden="true">*</span>'}`;
 					qCard.appendChild(qText);
 
 					// Render specific inputs
@@ -2362,7 +2423,7 @@
             <path d="M7 13C10.3137 13 13 10.3137 13 7C13 3.68629 10.3137 1 7 1C3.68629 1 1 3.68629 1 7C1 10.3137 3.68629 13 7 13Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M7 4V7.5M7 10H7.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          Please answer this question to proceed.
+          <span class="error-text-content">Please answer this question to proceed.</span>
         `;
 					qCard.appendChild(errorMsg);
 
@@ -2429,13 +2490,13 @@
 				const stateKey = `${category}__${q.q}`;
 				const savedVal = state.answers[stateKey];
 
-				if (q.type === 'text') {
+				if (q.type === 'text' || q.type === 'email') {
 					const input = document.createElement('input');
-					input.type = 'text';
+					input.type = q.type;
 					input.id = `q-input-${idx}`;
 					input.value = savedVal || '';
-					input.placeholder = 'Type your response here...';
-					input.setAttribute('aria-required', 'true');
+					input.placeholder = q.type === 'email' ? 'example@domain.com' : 'Type your response here...';
+					input.setAttribute('aria-required', q.optional ? 'false' : 'true');
 					blockEmojis(input);
 					input.addEventListener('input', (e) => {
 						state.answers[stateKey] = e.target.value;
@@ -2450,7 +2511,7 @@
 					textarea.id = `q-input-${idx}`;
 					textarea.value = savedVal || '';
 					textarea.placeholder = 'Write your detailed feedback here...';
-					textarea.setAttribute('aria-required', 'true');
+					textarea.setAttribute('aria-required', q.optional ? 'false' : 'true');
 					blockEmojis(textarea);
 					textarea.addEventListener('input', (e) => {
 						state.answers[stateKey] = e.target.value;
@@ -2465,7 +2526,7 @@
 
 					const select = document.createElement('select');
 					select.id = `q-input-${idx}`;
-					select.setAttribute('aria-required', 'true');
+					select.setAttribute('aria-required', q.optional ? 'false' : 'true');
 
 					const placeholderOpt = document.createElement('option');
 					placeholderOpt.value = '';
@@ -2814,22 +2875,40 @@
 					const val = state.answers[stateKey];
 					let qValid = true;
 
-					if (q.type === 'text' || q.type === 'textarea') {
-						if (!val || val.trim() === '') qValid = false;
-					} else if (q.type === 'dropdown') {
-						if (!val) qValid = false;
-					} else if (q.type === 'rating') {
-						if (!val || val === 0) qValid = false;
-					} else if (q.type === 'radio') {
-						if (!val) qValid = false;
-					} else if (q.type === 'checkbox') {
-						if (!val || val.length === 0) qValid = false;
+					if (!q.optional) {
+						if (q.type === 'text' || q.type === 'textarea') {
+							if (!val || val.trim() === '') qValid = false;
+						} else if (q.type === 'email') {
+							if (!val || val.trim() === '' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim())) qValid = false;
+						} else if (q.type === 'dropdown') {
+							if (!val) qValid = false;
+						} else if (q.type === 'rating') {
+							if (!val || val === 0) qValid = false;
+						} else if (q.type === 'radio') {
+							if (!val) qValid = false;
+						} else if (q.type === 'checkbox') {
+							if (!val || val.length === 0) qValid = false;
+						}
+					} else {
+						if (q.type === 'email' && val && val.trim() !== '') {
+							if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim())) qValid = false;
+						}
 					}
 
 					const qCard = document.getElementById(`qc-${idx}`);
 					if (!qValid) {
 						isValid = false;
 						qCard.classList.add('error');
+						
+						const errorMsgText = qCard.querySelector('.error-text-content');
+						if (errorMsgText) {
+							if (q.type === 'email' && val && val.trim() !== '') {
+								errorMsgText.textContent = 'Please enter a valid email address.';
+							} else {
+								errorMsgText.textContent = 'Please answer this question to proceed.';
+							}
+						}
+
 						if (!firstErrorCard) {
 							firstErrorCard = qCard;
 						}
