@@ -1595,18 +1595,6 @@
 									'7 or more times a year',
 								],
 							},
-							{
-								q: 'What is your approximate annual household income?',
-								type: 'dropdown',
-								options: [
-									'Below ₹5 lakh',
-									'₹5L – ₹10L',
-									'₹10L – ₹20L',
-									'₹20L – ₹50L',
-									'Above ₹50L',
-									'Prefer not to say',
-								],
-							},
 						],
 					},
 					{
@@ -1626,19 +1614,8 @@
 								],
 							},
 							{
-								q: "How important is 'Instagram-worthiness' when choosing a destination?",
-								type: 'rating',
-								options: [
-									'1 – Not important at all',
-									'2',
-									'3 – Somewhat important',
-									'4',
-									'5 – Very important',
-								],
-							},
-							{
 								q: 'How far in advance do you start researching a trip?',
-								type: 'dropdown',
+								type: 'checkbox',
 								options: [
 									'Same week I want to go',
 									'1–2 weeks before',
@@ -1648,16 +1625,6 @@
 									'6+ months before',
 								],
 							},
-							{
-								q: "Have you ever regretted a trip because it wasn't what you expected online?",
-								type: 'dropdown',
-								options: [
-									'Yes, multiple times',
-									'Yes, once',
-									'No, expectations matched reality',
-									'No, I always research thoroughly',
-								],
-							},
 						],
 					},
 					{
@@ -1665,7 +1632,7 @@
 						questions: [
 							{
 								q: 'How do you currently book your trips?',
-								type: 'dropdown',
+								type: 'checkbox',
 								options: [
 									'Fully self-planned',
 									'Full package from an app/website',
@@ -1677,7 +1644,7 @@
 							},
 							{
 								q: 'Which platforms have you used to book a trip in the past year?',
-								type: 'dropdown',
+								type: 'checkbox',
 								options: [
 									'MakeMyTrip',
 									'Goibibo',
@@ -1691,19 +1658,8 @@
 								],
 							},
 							{
-								q: 'How much time do you spend researching before confirming a booking?',
-								type: 'dropdown',
-								options: [
-									'Less than 1 hour',
-									'1–3 hours',
-									'3–6 hours',
-									'6–12 hours',
-									'More than 12 hours over multiple days',
-								],
-							},
-							{
 								q: 'What is your biggest frustration with how you currently book tours?',
-								type: 'dropdown',
+								type: 'checkbox',
 								options: [
 									'Hidden costs discovered late',
 									'Unreliable/unverified operators',
@@ -1745,28 +1701,6 @@
 								],
 							},
 							{
-								q: 'Would you prefer all-inclusive price over low headline + add-ons?',
-								type: 'dropdown',
-								options: [
-									'Yes – one transparent total price',
-									'No – prefer low headline, pay for what I use',
-									'No preference',
-									'Depends on size of add-ons',
-								],
-							},
-							{
-								q: 'What refund policy is acceptable if you cancel 45 days before?',
-								type: 'dropdown',
-								options: [
-									'Full 100% refund',
-									'75–90% refund',
-									'50% refund',
-									'Any refund is acceptable',
-									'Non-refundable is ok if price was low',
-									'Depends on reason for cancellation',
-								],
-							},
-							{
 								q: 'Would group discounts influence you to travel with a larger group?',
 								type: 'dropdown',
 								options: [
@@ -1795,7 +1729,7 @@
 							},
 							{
 								q: 'What signals make you trust a tour operator?',
-								type: 'dropdown',
+								type: 'checkbox',
 								options: [
 									'Positive reviews from verified travellers',
 									'Number of years in business',
@@ -1810,274 +1744,9 @@
 								],
 							},
 							{
-								q: 'How important are traveller reviews when selecting an operator?',
-								type: 'rating',
-								options: [
-									"1 – I don't rely on reviews",
-									'2',
-									'3 – Somewhat important',
-									'4',
-									'5 – Most important factor',
-								],
-							},
-							{
 								q: 'Have you had a bad experience with a tour operator? What went wrong?',
 								type: 'text',
 								options: [],
-							},
-							{
-								q: "Would a 'verified by the platform' badge influence your decision?",
-								type: 'rating',
-								options: [
-									'1 – No influence',
-									'2',
-									'3 – Somewhat influential',
-									'4',
-									'5 – Very strong influence',
-								],
-							},
-						],
-					},
-					{
-						category: 'Food & Dietary Needs',
-						questions: [
-							{
-								q: 'How important is food quality and variety when choosing a package?',
-								type: 'rating',
-								options: [
-									"1 – Food doesn't factor in",
-									'2',
-									'3 – Somewhat important',
-									'4',
-									"5 – It's a major deciding factor",
-								],
-							},
-							{
-								q: 'Do you have any dietary preferences or restrictions?',
-								type: 'dropdown',
-								options: [
-									'Vegetarian',
-									'Jain (no root vegetables)',
-									'Vegan',
-									'Halal',
-									'Gluten-free',
-									'No onion / no garlic',
-									'Nut allergy or other food allergy',
-									'No restrictions – I eat everything',
-									'Other',
-								],
-							},
-							{
-								q: 'How clearly should a package describe meals?',
-								type: 'dropdown',
-								options: [
-									'Every meal listed with menu',
-									'Meal type listed (breakfast, dinner) without menu',
-									'Just mention if meals are included or not',
-									"I don't need meal details – I'll sort food myself",
-								],
-							},
-							{
-								q: 'Would you pay extra to ensure food catering to your dietary needs throughout?',
-								type: 'dropdown',
-								options: [
-									'Yes, definitely',
-									'Yes, if charge is reasonable',
-									'Only if no alternatives available',
-									"No – I'll manage on my own",
-								],
-							},
-							{
-								q: 'How important is trying local and regional cuisine during a trip?',
-								type: 'rating',
-								options: [
-									'1 – I prefer familiar food',
-									'2',
-									'3 – I enjoy both',
-									'4',
-									'5 – Trying local food is a trip highlight',
-								],
-							},
-							{
-								q: 'Would a filter to show operators who cater to specific diets be useful?',
-								type: 'dropdown',
-								options: [
-									'Very useful – I always need this',
-									'Useful sometimes',
-									'Nice to have but not essential',
-									'Not relevant to me',
-								],
-							},
-							{
-								q: 'Would you be interested in a food-focused travel package?',
-								type: 'dropdown',
-								options: [
-									'Yes, as a dedicated food trip',
-									'Yes, as part of a larger trip',
-									'Maybe – depends on destination',
-									'Not particularly interested',
-								],
-							},
-						],
-					},
-					{
-						category: 'Activities & Experiences',
-						questions: [
-							{
-								q: 'What types of activities do you look for in a trip?',
-								type: 'dropdown',
-								options: [
-									'Trekking / hiking',
-									'Water sports (rafting, kayaking, surfing)',
-									'Cultural & heritage walks',
-									'Wildlife safaris & bird watching',
-									'Yoga & wellness retreats',
-									'Cooking classes & food tours',
-									'Photography-focused itineraries',
-									'Nightlife & social experiences',
-									'Spiritual & religious experiences',
-									'Extreme adventure sports',
-									'Village & rural experiences',
-									'Craft & art workshops',
-									'Cycling tours',
-									'Camping & night stays under stars',
-								],
-							},
-							{
-								q: 'Do you prefer structured activities or free time to explore?',
-								type: 'rating',
-								options: [
-									'1 – Fully planned schedule every day',
-									'2',
-									'3 – Mix of structured and free time',
-									'4',
-									'5 – Maximum free time to explore',
-								],
-							},
-							{
-								q: 'How important is it to have a local guide during activities?',
-								type: 'dropdown',
-								options: [
-									'Essential – I always want a guide',
-									'Nice to have but not required',
-									'Depends on the activity',
-									'I strongly prefer exploring without a guide',
-								],
-							},
-							{
-								q: 'Would you be interested in community experiences (village events, learning crafts, visiting local family)?',
-								type: 'rating',
-								options: [
-									'1 – Not interested',
-									'2',
-									'3 – Somewhat interested',
-									'4',
-									'5 – This is what I travel for',
-								],
-							},
-							{
-								q: 'How important is it that activities match your physical fitness level?',
-								type: 'rating',
-								options: [
-									"1 – I'll manage whatever is planned",
-									'2',
-									'3 – Somewhat important',
-									'4',
-									'5 – Very important, I need to know intensity',
-								],
-							},
-							{
-								q: 'Would you book a whole trip around a single unique experience?',
-								type: 'dropdown',
-								options: [
-									"Yes – I'd plan a whole trip around it",
-									'Sometimes, for the right experience',
-									'Rarely – I prefer balanced itineraries',
-									'No – I need multiple reasons to visit',
-								],
-							},
-							{
-								q: 'How do you prefer activities to be presented in a package?',
-								type: 'dropdown',
-								options: [
-									'Fixed list of activities in the price',
-									'A menu where I choose what I want',
-									'Core itinerary with optional paid add-ons',
-									'Completely flexible – I plan on arrival',
-								],
-							},
-							{
-								q: 'Would a difficulty rating (easy/moderate/challenging) on activities help you choose?',
-								type: 'dropdown',
-								options: [
-									"Very helpful – I'd filter by this",
-									'Somewhat helpful',
-									'Nice to have',
-									'Not necessary for me',
-								],
-							},
-						],
-					},
-					{
-						category: 'Accommodation',
-						questions: [
-							{
-								q: 'What type of accommodation do you prefer?',
-								type: 'dropdown',
-								options: [
-									'Dorm / budget hostel',
-									'Budget hotel (₹500–₹1,500/night)',
-									'Mid-range hotel (₹1,500–₹4,000/night)',
-									'Homestay with local family',
-									'Boutique / heritage property',
-									'Resort',
-									'Luxury hotel or villa',
-									'Camping / glamping',
-									'Unique stays (treehouses, houseboats, eco-lodges)',
-								],
-							},
-							{
-								q: 'How important is accommodation quality relative to the overall trip experience?',
-								type: 'rating',
-								options: [
-									'1 – I just need a place to sleep',
-									'2',
-									'3 – Moderately important',
-									'4',
-									'5 – Accommodation is core to my experience',
-								],
-							},
-							{
-								q: 'How important is eco-friendly / sustainable accommodation to you?',
-								type: 'rating',
-								options: [
-									'1 – Not a factor',
-									'2',
-									'3 – I consider it if convenient',
-									'4',
-									'5 – I actively seek sustainable options',
-								],
-							},
-							{
-								q: 'Would you share accommodation with other travellers to reduce costs?',
-								type: 'dropdown',
-								options: [
-									'Yes, always happy to share',
-									'Yes, if savings are 30%+ vs private',
-									'Only on specific trip types',
-									'No, I always prefer private accommodation',
-								],
-							},
-							{
-								q: 'How important is Wi-Fi availability at accommodation?',
-								type: 'rating',
-								options: [
-									'1 – I go off-grid by choice',
-									'2',
-									'3 – Nice to have',
-									'4',
-									'5 – Reliable Wi-Fi is non-negotiable',
-								],
 							},
 						],
 					},
@@ -2086,7 +1755,7 @@
 						questions: [
 							{
 								q: 'What would most likely make you switch to a new travel app?',
-								type: 'dropdown',
+								type: 'checkbox',
 								options: [
 									'Better or more competitive prices',
 									'Wider range of operators and packages',
@@ -2109,17 +1778,6 @@
 									'3 – Somewhat interesting',
 									'4',
 									"5 – I'd actively use this",
-								],
-							},
-							{
-								q: 'How much do you trust AI-generated travel itinerary recommendations?',
-								type: 'rating',
-								options: [
-									"1 – I don't trust AI suggestions",
-									'2',
-									"3 – I'd consider them as one input",
-									'4',
-									"5 – I'd fully follow an AI recommendation",
 								],
 							},
 							{
@@ -2148,40 +1806,9 @@
 						category: 'Safety & Support',
 						questions: [
 							{
-								q: 'Would you prefer travel insurance bundled into the package price?',
-								type: 'dropdown',
-								options: [
-									'Yes – want it automatically included',
-									'Yes – if priced reasonably',
-									'No – I buy insurance separately',
-									"I don't buy travel insurance at all",
-								],
-							},
-							{
 								q: 'Are there destinations in India you avoid due to safety concerns?',
 								type: 'text',
 								options: [],
-							},
-							{
-								q: 'If an operator cancels last minute, what resolution would you expect?',
-								type: 'dropdown',
-								options: [
-									'Full refund immediately',
-									'Full refund + alternative trip arranged by platform',
-									'Partial refund + credit for future booking',
-									'Platform mediates but I handle with operator',
-									"I'd manage directly with the operator",
-								],
-							},
-							{
-								q: 'How comfortable are you sharing live location with the app for safety tracking?',
-								type: 'dropdown',
-								options: [
-									'Very comfortable – safety first',
-									"Comfortable if it's optional",
-									'Somewhat uncomfortable – only in emergencies',
-									'Not comfortable at all – privacy matters more',
-								],
 							},
 						],
 					},
@@ -2679,8 +2306,23 @@
 					blockEmojis(otherInput);
 					otherInputContainer.appendChild(otherInput);
 
-					// Initial setup for loaded values
-					let currentSelection = savedVal || (isMulti ? [] : null);
+					// Initial setup for loaded values, sanitizing string vs array data from prior survey sessions
+					let currentSelection;
+					if (isMulti) {
+						if (Array.isArray(savedVal)) {
+							currentSelection = [...savedVal];
+						} else if (typeof savedVal === 'string' && savedVal.trim() !== '') {
+							currentSelection = [savedVal];
+						} else {
+							currentSelection = [];
+						}
+					} else {
+						if (Array.isArray(savedVal)) {
+							currentSelection = savedVal[0] || null;
+						} else {
+							currentSelection = savedVal || null;
+						}
+					}
 
 					const updateOtherVisibility = () => {
 						let showOther = false;
