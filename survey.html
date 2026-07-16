@@ -2745,11 +2745,17 @@
 				return stored ? JSON.parse(stored) : null;
 			}
 
+			let lastLayoutIsWide = window.innerWidth >= 1441;
+
 			// Listen to changes in viewport to adapt side panel layouts dynamically
 			window.addEventListener('resize', () => {
 				if (state.currentSurvey && !state.isSubmitted) {
-					// Rerender layout skeleton to fit wide vs narrow desktop viewports
-					renderSurvey(state.currentSurvey);
+					const isWide = window.innerWidth >= 1441;
+					if (isWide !== lastLayoutIsWide) {
+						lastLayoutIsWide = isWide;
+						// Rerender layout skeleton only when layout type transitions
+						renderSurvey(state.currentSurvey);
+					}
 				}
 			});
 
